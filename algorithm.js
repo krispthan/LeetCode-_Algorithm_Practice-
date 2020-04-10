@@ -364,10 +364,10 @@ const check3Sum = arr => {
 //input: two stirngs and output:boolean */
 /*April 9 ,2020 Quarantine 1 Month  */
 const backSpaceCompare = (S, T) => {
-    return creatSt(S) === createImageBitmap(T) ? true : false
+    return createSt(S) === createSt(T) ? true : false
 }
 
-const creatSt = (S) => {
+const createSt = (S) => {
     let str = [];
     for (let i = 0; i < S.length; i++) {
         if (S[i] === "#") {
