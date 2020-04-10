@@ -107,6 +107,8 @@ sumOfRecursion(432);
 /**Maximum Subarray  */
 
 // output :  6
+
+/*April 4.2020 Quarantine 30 days in  */
 /**iteratate the array take the first two elements and find the sum 
  *take the middle number of the array  let  middle = numArr[Math.round((arr.length - 1) / 2)];
  * loop the array and sum (i+1), 
