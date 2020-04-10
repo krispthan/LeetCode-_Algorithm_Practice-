@@ -178,6 +178,7 @@ const moveZeros = arr => {
 }
 
 /*Maximum Subarray */
+/*April 5.2020 Quarantine 30 days in  */
 /**find the middle ponint of the element arr(Math.round(arr.length -1/2));
  * 1)split the array in half : left and right  MaxLeftSum  , MaxRightSum , TotalSum, MaxValues
  * maxSubArray (sum === midPoint )
@@ -217,6 +218,7 @@ const sellAndBuy = arr => {
 sellAndBuy(input);
 
 /*Group Anagrams */
+/*April 6.2020 Quarantine 30 days in  */
 let inputs = ["eat", "tea", "tan", "ate", "nat", "bat"];
 const groupAnagrams = strs => {
     let hash = {}; //create a hashtable to store the str
@@ -243,6 +245,7 @@ const groupAnagrams = strs => {
 groupAnagrams(inputs)
 
 /*Count Elements*/
+/*April 7.2020 Quarantine 30 days in  */
 // create a hash table 
 // create a counter 
 //loop through the arr - check if the current element 
@@ -268,7 +271,7 @@ const countElements = arr => {
     return counter;
 };
 countElements(arr1);
-
+/*April 8.2020 Quarantine 30 days in  */
 /**Linked List**/
 const Node = (data, nex) => {
     this.data = data;
@@ -292,8 +295,9 @@ while (fastPointer.next != null && fastPointer.next.next != null) {
 slowPointer.data;
 
 /***3Sum */
-
 //first sort the array Given array nums = [-1, 0, 1, 2, -1, -4] // 
+/*April 8.2020 Quarantine 30 days in  */
+//brute force
 const check3Sum = (nums) => {
     let newArr = [];
     nums = nums.sort((a, b) => {
@@ -321,38 +325,54 @@ const check3Sum = (nums) => {
     }
     return newArr;
 }
+//alternate solution
+const check3Sum = arr => {
+    arr = arr.sort((a, b) => {
+        return a - b;
+    })
+    let newArr = [];
 
-// const check3Sum = arr => {
-//     arr = arr.sort((a, b) => {
-//         return a - b;
-//     })
-//     let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        let start = i + 1;
+        let end = arr.length - 1;
+        if (i < 0 && arr[i] === arr[i - 1]) {
+            continue;
+        }
+        while (start < end) {
+            if (end < arr.length && arr[end] == arr[end + 1]) {
+                end--;
+                continue;
+            }
+            if (arr[i] + arr[start] + arr[end] === 0) {
+                newArr.push(arr[i], arr[start], arr[end]);
+                start++;
+                end--;
+            } else if (arr[i] + arr[start] + arr[end] < 0) {
+                start++;
+            } else {
+                end--;
+            }
 
-//     for (let i = 0; i < arr.length; i++) {
-//         let start = i + 1;
-//         let end = arr.length - 1;
-//         if (i < 0 && arr[i] === arr[i - 1]) {
-//             continue;
-//         }
-//         while (start < end) {
-//             if (end < arr.length && arr[end] == arr[end + 1]) {
-//                 end--;
-//                 continue;
-//             }
-//             if (arr[i] + arr[start] + arr[end] === 0) {
-//                 newArr.push(arr[i], arr[start], arr[end]);
-//                 start++;
-//                 end--;
-//             } else if (arr[i] + arr[start] + arr[end] < 0) {
-//                 start++;
-//             } else {
-//                 end--;
-//             }
-
-//         }
-//     }
-//     return newArr;
-// }
+        }
+    }
+    return newArr;
+}
 
 /*Backspace String Compare  */
-//input: two stirngs and output:boolean 
+//input: two stirngs and output:boolean */
+/*April 9 ,2020 Quarantine 1 Month  */
+const backSpaceCompare = (S, T) => {
+    return creatSt(S) === createImageBitmap(T) ? true : false
+}
+
+const creatSt = (S) => {
+    let str = [];
+    for (let i = 0; i < S.length; i++) {
+        if (S[i] === "#") {
+            str.pop();
+        } else {
+            str.push(S[i]);
+        }
+    }
+    return str = str.join("");
+}
