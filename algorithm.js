@@ -389,13 +389,8 @@ const minStack = () => {
     this.minStack = [];
 }
 
-//initialize both data sets 
-const minStack = () => {
-    this.stackOne = new stack(); //stack to add val
-    this.minStack = new Stack(); // tracks min val
-}
 const push = (x) => {
-    //push the int into the first stack
+    //push the val into the first stack
     //check the second min stack to see if its empty || if the firstStack (x) is smaller than the current min stack 
     //if so, push the (x), if not return 
     this.stackOne.push();
