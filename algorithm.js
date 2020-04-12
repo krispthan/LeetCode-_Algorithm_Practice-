@@ -378,3 +378,42 @@ const createSt = (S) => {
     }
     return str = str.join("");
 }
+
+
+/*April 10.2020 Min Stack */
+// Have two stacks , first stack is where push(), pop(), method . second stack keeps track of the min and top num
+
+//create identifier for two stacks 
+const minStack = () => {
+    this.stackOne = [];
+    this.minStack = [];
+}
+
+//initialize both data sets 
+const minStack = () => {
+    this.stackOne = new stack(); //stack to add val
+    this.minStack = new Stack(); // tracks min val
+}
+const push = (x) => {
+    //push the int into the first stack
+    //check the second min stack to see if its empty || if the firstStack (x) is smaller than the current min stack 
+    //if so, push the (x), if not return 
+    this.stackOne.push();
+    if (minStack.length === 0 || x <= this.minStack[this.minstack.length - 1]) {
+        this.minStack.push(x)
+    }
+}
+const pop = () => {
+    let x = this.stackOne.pop(); // pop the first val of  stackOne off
+    //check if the current x val is equal to the top stack val of the minStack, if so , pop the ()
+    if (x === this.minStack[minStack.length - 1]) {
+        this.minStack.pop();
+    }
+}
+const top = () => { //check the top value of the firststack and return that value 
+    return this.stackOne[stackOne.length - 1];
+}
+const getMin = () => {
+    //check the minstack min top value of the stack and return that value 
+    return tthis.minStack(this.minStack.length - 1);
+}
