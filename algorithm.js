@@ -412,3 +412,26 @@ const getMin = () => {
     //check the minstack min top value of the stack and return that value 
     return tthis.minStack(this.minStack.length - 1);
 }
+
+
+/**April 12, 2020  Last Stone Weight  */
+const stoneWeightArr = [2, 7, 4, 1, 8, 1];
+const lastStoneWeight = stones => {
+    //check if the array is there 
+    while (stones.length > 1) {
+        let sortedArr = stones.sort((a, b) => {
+            b - a;
+        }) // sort the array from descending order 
+        let diff = sortedArr[0] - sortedArr[1]; // check the difference of the sorted index [0] - sorted index[1];
+        if (diff != 0) { // if the diff is not eqaul to zero , then push the difference to sorted arr
+            sortedArr.push[diff];
+        }
+        stones = sortedArr.slice(2) // takes the first of the two indexes of the arr
+    }
+    if (stones.length === 0) {
+        return 0;
+    } else {
+        return stones[0];
+    }
+}
+lastStoneWeight(stoneWeightArr);
