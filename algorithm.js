@@ -435,3 +435,32 @@ const lastStoneWeight = stones => {
     }
 }
 lastStoneWeight(stoneWeightArr);
+
+
+/* April 13.2020 Contiguous Array : Find the max length of conti subaway with equal # of 0 and 1 */
+const contigInput = [0, 1];
+const contiguousArr = arr => {
+    //create a hash Map
+    let hashMap = {
+        0: -1
+    } // save initial count of zeros and -1
+    //create a max_length = 0;
+    let max_length = 0;
+    let count = 0;
+    // iterate through the array and if there is a hashMap[i]  equal, decrement
+    //if there is a hashMap[i] == 1, increment
+    for (let i = 0; i < arr.length; i++) {
+        //check if the current arr[i] is equal to the value of 1 or zero 
+        //if 1: then increment 1 , if 0: then decrement;
+        let currentVal = arr[i] === 1 ? 1 : -1;
+        count += currentVal; // running the totall current count
+
+        //put the count and index into the hashtable when looping through  it
+        if (hashMap.hasOwnProperty(count)) { //  if current hashtable has the same count
+            max = Math.max(max, i - hashMap[count]) // the diff between the current and current hashMap[count]
+        } else {
+            hashMap[count] = i; // store the count
+        }
+    }
+    return max_length;
+}
