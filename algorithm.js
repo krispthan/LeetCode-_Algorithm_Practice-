@@ -501,3 +501,45 @@ const performanceStringShift = (s, shift) => {
     return result;
 
 }
+
+/*April 15, 2020 Poduct Array Except Self
+create an output arr
+create a product identifer that will multiply as we traverse through the array
+traverse through the array and multiply the product with the arr[i]
+get the product of each element and that will be the new product
+traverse thrugh the array again and the ouput will be the product/arr[i]
+*/
+//with division
+const productArrayExceptSelf = arr => {
+    let output = {};
+    let product = 1;
+    for (let i = 0; i < arr.length; i++) {
+        product *= arr[i];
+        console.log(product);
+    }
+    for (let i = 0; i < arr.length; i++) {
+        output = product / arr[i];
+
+    }
+    return output;
+}
+
+//without division
+const productArrayExceptSelf = arr => {
+    let arrLength = arr.length;
+    let leftProduct = new Array(arrLength);
+    let rightProduct = new Array(arrLength);
+    let output = new Array(arrLength);
+    left[0] = 1;
+    right[arrLength - 1] = 1;
+    for (let i = 0; i < arrLength; i++) {
+        left[i] = nums[i - 1] * left[i - 1];
+    }
+    for (let i = arrLength - 2; i >= 0; i--) {
+        right[i] = nums[i + 1] * right[i + 1];
+    }
+    for (let i = 0; i < arrLength; i++) {
+        output[i] = left[i] * right[i];
+    }
+    return output;
+}
