@@ -543,3 +543,60 @@ const productArrayExceptSelf = arr => {
     }
     return output;
 }
+
+/**April 16th,2020 Valid String Parenthesis 
+ *  given a str as input, traverse through the string to check if current character of the string is 
+ * either "{", "(", or "[", "]","}",")"
+ * if the str at the char has that , push the char into the str
+ * else , check if the str is not empty && str.charAt(i) || str.charAt(i) has one of the following above characters and the character is at the top of the stack (length.-1), if so ,then pop the str
+ * if the str is empty then return true : false
+ */
+
+const validStrParenthesis = s => {
+    let newArr = [];
+    let currentMap = {
+        "{": "}",
+        "[": "]",
+        "(": ")"
+    };
+    for (let char of s) {
+        if (char === "(" || char === "[" || char === "{") {
+            newArr.push(char);
+        } else {
+            if (newArr[newArr.length - 1] === currentMap[i]) {
+                newArr.pop();
+            }
+            return false;
+        }
+    }
+    return newArr.length === 0 ? true : false;
+
+}
+
+/*April 18, 2020 Minimum Path Sum */
+/*start with the sum of the smallest subproblem first left corner to right corner
+ * check if there is a even a grid  grid.length == 0  || grid == null, return 0;
+ * create a new Arr starting at the first row let currentGrid = new Array(grid.length)[grid[0].length];
+ * iterate through the new array and for every cell of the array iterate through that; this will take  O(n)^2
+ * as we iterate through the cell of the array , we need to sum each cell
+we want to make sure that the sum of the cell are not the first row 
+ */
+
+const MinimumPathSum = grid => {
+    let height = grid.lnegth;
+    let width = grid[0].length;
+    for (let i = 0; i < height; i++) {
+        for (let j = 0; j < width; j++) {
+            if (i !== 0 && j !== 0) {
+                grid[i][j] += Math.min(grid[i - 1][j], gird[i][j - 1]);
+
+            } else if (i !== 0) {
+                grid[i][j] += grid[i - 1][j];
+            } else if (j !== 0) {
+                grid[i][j] += grid[i][j - 1];
+            }
+        }
+    }
+    return grid[hieght - 1][width - 1];
+
+}
