@@ -582,7 +582,7 @@ const validStrParenthesis = s => {
 we want to make sure that the sum of the cell are not the first row 
  */
 
-const MinimumPathSum = grid => {
+const minimumPathSum = grid => {
     let height = grid.lnegth;
     let width = grid[0].length;
     for (let i = 0; i < height; i++) {
@@ -598,5 +598,70 @@ const MinimumPathSum = grid => {
         }
     }
     return grid[hieght - 1][width - 1];
+}
 
+
+/*April 19, 2020 Search in Rotated Sorted Array 
+Create two helper functions: 
+First find the peak by checking the first and the last index value and then find the midpoint from there
+Once found the midpoint, check if the current midpoint is greater than the val to the left :
+     if current midpoint val is greater than the val to left, ignore all the #'s to the right
+
+Second do a binary search compare mid point with the target value 
+if the midpoint is bigger than the target, then now make the midpoint be the new high val 
+get the new mid point again to compare it with the target 
+-is the first index > target , if so, then that will be the midpoint other wise it will be -1;
+*/
+//may exeed time complexity
+const findPeak = (arr, l = 0, h = arr.length) => {
+    let mid = Math.floor(h + 1) / 2;
+    while (arr[mid - 1] > arr[mid] || arr[mid + 1] > arr[mid]) {
+        arr[0] > arr[mid] ? (h = mid) : (l = mid);
+        mid = Math.floor((h + 1) / 2);
+    }
+    return mid;
+}
+
+const binarySearch = (arr, target, l = 0, h = arr.length) => {
+    let mid = Math.floor(h + l) / 2;
+    while (arr[mid] !== target && Math.abs(h - 1) > 1) {
+        arr[mid] > target ? (h = mid) : (l = mid);
+    }
+    return arr[mid] === target ? mid : -1;
+}
+
+const searchSortedArray = (nums, target) => {
+    const peak = findPeak(nums);
+    return nums[0] > target ?
+        binarySearch(arr, target, peak + 1) :
+        binarySearch(arr.target, 0, peak + 1);
+}
+
+//better approach 
+const searchSortedArray = (nums, target) => {
+    if (nums.length == 0 || nums == null) { // check if there even is an array if so return -1
+        return -1
+    };
+    let start = 0; //start of the index array 
+    let end = nums.length - 1; // last of the index array 
+    while (start < end) { // while the first index is smaller than the end of the array 
+        let mid = Math.floor((start + end) / 2); //check the mid point 
+        if (nums[mid] === target) { // if the midpoint is == target , return midpoint
+            return mid;
+        }
+        if (nums[mid] > nums[end]) { //if midpoint is bigger than the end of the index 
+            if (target >= nums[start] && target < nums[mid]) { //if the target is bigger or equal to the start and target is smaller than the mid
+                end = mid - 1; // make the the become the new new midpoint -1;
+            } else {
+                start = mid + 1; // make the start become the midpoint +1;
+            }
+        } else {
+            if (target > nums[mid] && target <= ends[end]) { // if the target is bigger than the midpoint and target is smaller or equal to the end of index
+                start = mid + 1; // make the start become the new midpoint plus 1
+            } else {
+                end = mid - 1; // make the end become the new midpoint minus 1
+            }
+        }
+    }
+    return nums[end] === target ? end : -1; // return the new end if equal to the target , if so, that will be the new end , else, return -1
 }
