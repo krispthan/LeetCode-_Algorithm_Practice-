@@ -665,3 +665,48 @@ const searchSortedArray = (nums, target) => {
     }
     return nums[end] === target ? end : -1; // return the new end if equal to the target , if so, that will be the new end , else, return -1
 }
+
+
+/* April 20, 2020 Construct a binary Tree Preorder */
+const fromPreorder = preorder => {
+    let root = new TreeNode(preorder[0]) // create  from the 0th index the root 
+    for (let i = 0; i < preorder.length; i++) { // traverse through the preorder list 
+        appendToTreeNode(root, preorder[i]); // use recursion to call a helper function to append the root and the first element of preorder to the tre
+    }
+    return root;
+}
+
+const appendToTreeNode = (root, val) => { // helper function that takes root and val as paramters
+    if (val <= root.val) { // check if the rootval is bigger than the val , if so,
+        if (root.left) { // then check if there is a root left , if so, 
+            appendToTreeNode(root.left, val); // append the root to the left and its val
+        } else {
+            root.left = new TreeNode(val); // else, the new tree node will be the new root left
+        } else {
+            if (root.right) {
+                appendToTreeNode(root.right, val);
+            } else {
+                root.right = new TreeNode(val);
+            }
+        }
+
+    }
+}
+
+/* April 21. 2020  LeftMost Col w/ a least a one */
+const leftIndexSearch = binaryMatrix => {
+    let row = binaryMatrix.dimensions();
+    let col = binaryMatrix.dimensions();
+    let result = column;
+    for (let i = 0; i < row; i++) {
+        while (binaryMatrix.get(i, j - 1) == 1) {
+            j--;
+            if (j == 0) return 0;
+        }
+        if (j < result) {
+            result = j;
+        }
+    }
+    result == column ? result = -1 : result;
+    return result;
+}
