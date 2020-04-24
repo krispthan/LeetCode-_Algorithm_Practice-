@@ -22,40 +22,46 @@ for (let i in hashMap) {
 
 // hashMap.hasOwnProperty[x] check if the current hashMap has the current prop
 
+//slice method when going through a string and checking every two letters in a str str.slice( i , i + 2);
 
-/**April 14, 2020 Performance String Shift */
-//create a shift Count identifier  to initiate the count 
-//traverse through the shift.length and check if the current direction is Zero
-//if zero, then add the current Amount , if 1, then add curent amount -1;
-//then check for effective rotation:
-// set the shiftCount = shiftCount by % of string.length
-//check if the shiftCount is more > 0, if its positive, move the string to the left 
-//check if the shiftcount is less < 0, negative move the string to the right 
 
-const performanceStringShift = (s, shift) => {
-    let shiftCount = 0;
-    for (let i = 0; i < shift.length; i++) {
-        if (shift[i][0] === 0) {
-            shiftCount += shift[i][1];
-        } else {
-            shiftCount -= shift[i][1];
-        }
+//charAt(i) = present the char at that index 
+//charAt(.length-1) = present the char at the  top of stack
+
+//when creating an array starting at the first row of grid 
+let startingGridFirstRow = new Array(grid.length)[grid[0].length];
+
+//traverse through the array and go into each cell of the same array;
+for (let i = 0; i < startingGridFirstRow.length; i++) {
+    for (let j = 0; j < startingGridFirstRow[i].length; j++)
+}
+// find current peak or midpoint of an array 
+const findPeak = (arr, l = 0, h = arr.length) => {
+    let mid = Math.floor(h + 1) / 2;
+    while (arr[mid - 1] > arr[mid] || arr[mid + 1] > arr[mid]) {
+        arr[0] > arr[mid] ? (h = mid) : (l = mid);
+        //find new mid
+        mid = Math.floor(h + 1) / 2;
     }
-    let result = null;
-    if (shiftCount > 0) { // move the char of string to the right append to the beginning
-        shiftCount %= s.length;
-        let firstString = s.substr(0, shiftCount);
-        let backString = s.substr(shiftCount);
-        result = backString + firstString;
+    return mid;
+}
 
-    } else { // nregative move the char of string to the back
-        shiftCount = Math.abs(shiftCount) % s.length;
-        let len = s.length;
-        firstString = s.substr(0, len - shiftCount);
-        backString = s.substr(len - shiftCount);
-        result = backString + firstString;
+//row  let row = arr.length; also known as length
+//col let col = arr[0].length; also known as width
 
+//create a binary search
+const binarySearch = arr =>{
+    let row = arr.length;
+    let col = arr[0].length;
+    let r = 0;
+    let left= 0;
+    let mid = Math.floor((row + col)/ 2);
+    for (col < row){
+        return -1;
     }
-    return result;
-
+    if ( target == arr[mid]){
+        return mid;
+    } else if ( target <arr[mid]){
+        return binarySearch(arr, low, mid-1, target)
+    } else 
 }
